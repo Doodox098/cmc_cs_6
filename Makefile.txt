@@ -1,0 +1,16 @@
+root.o: root.c
+	gcc -c -o root.o root.c
+integral.o: integral.c
+	gcc -c -o integral.o integral.c
+main.o: main.c trsqr.h
+	gcc -c -o main.o main.c
+testr.o: testr.c trsqr.h
+	gcc -c -o testr.o testr.c
+testi.o: testi.c trsqr.h
+	gcc -c -o testi.o testi.c
+asm_func.o: asm_func.asm trsqr.h
+	nasm -f win32 -o asm_func.o asm_func.asm
+program: asm_func.o testr.o testi.o main.o integral.o root.o
+	gcc -lm -o program main.o asm_func.o testr.o testi.o integral.o root.o
+clean:
+    rm-rf.o
