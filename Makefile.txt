@@ -13,4 +13,4 @@ asm_func.o: asm_func.asm trsqr.h
 program: asm_func.o testr.o testi.o main.o integral.o root.o
 	gcc -lm -o program main.o asm_func.o testr.o testi.o integral.o root.o
 clean:
-    rm-rf.o
+    rm -rf .o

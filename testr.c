@@ -56,21 +56,22 @@ void testr(void){
         }
         printf("Enter accuracy of calculations(eps):\n");
         double eps;
-        int fake_pointer;
+        int num_culc = 0;
         scanf("%lf", &eps);
         double result;
         if(first_function == 1 || second_function == 1){
             if(first_function == 2 || second_function == 2){
-                result = root(f1, f2, 1, 2, &fake_pointer, eps);
+                result = root(f1, f2, 1, 2, &num_culc, eps);
             }
             else{
-                result = root(f1, f3, 2, 3, &fake_pointer, eps);
+                result = root(f1, f3, 2, 3, &num_culc, eps);
             }
         }
         else{
-            result = root(f2, f3, 2, 4, &fake_pointer, eps);
+            result = root(f2, f3, 2, 4, &num_culc, eps);
         }
-        printf("Result: %f \n", result);
+        printf("Result: %lf \n", result);
+        printf("Number of calculation: %d \n", num_culc);
         printf("-continue - Continue testing\n");
         printf("-end - Stop testing\n");
         gets(key);

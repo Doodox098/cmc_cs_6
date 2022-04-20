@@ -12,15 +12,15 @@ double f3(double x){
 
 int main(void){
     double eps1 = 0.001, eps2 = 0.001;
-    int *count[3];
+    int count = 0;
     double sum;
     double points[3];
     printf("Calculation started\n");
-    points[0] = root(func1, func2, 1.7, 2.2, count[0], eps1);
+    points[0] = root(func1, func2, 1.7, 2.2, &count, eps1);
     printf("Point 1 calculated\n");
-    points[1] = root(func2, func3, 0, 0.5, count[1], eps1);
+    points[1] = root(func2, func3, 0, 0.5, &count, eps1);
     printf("Point 2 calculated\n");
-    points[2] = root(func3, func1, -0.26, 0.32, count[2], eps1);
+    points[2] = root(func3, func1, -0.26, 0.32, &count, eps1);
     printf("Point 3 calculated\n");
     printf("Points calculated\n");
     double integrals[3];
@@ -31,11 +31,12 @@ int main(void){
     else if(integrals[0] + integrals[2] <= integrals[1]) sum = integrals[1] - (integrals[0] + integrals[2]);
     else sum = integrals[2] - (integrals[0] + integrals[1]);
     printf("Square calculated\n");
+    printf("Write \"-help\" to get list of commands\n");
     char key[10];
     while(1){
         gets(key);
         if(!strcmp(key, "-help")){
-            printf("-help - Information about available keys\n");
+            printf("-help - Information about available commands\n");
             printf("-points - List of intersection points\n");
             printf("-sqr - Square of curved triangle\n");
             printf("-count - Number of iterations to calculate each point of intersection\n");
@@ -52,18 +53,18 @@ int main(void){
             printf("Point 3: x: %lf y: %lf\n", points[2], func3(points[2]));
         }
         else if(!strcmp(key, "-count")){
-            printf("Point 1: %d\n", count[0]);
-            printf("Point 2: %d\n", count[1]);
-            printf("Point 3: %d\n", count[2]);
+            printf("Number of calculations: %d\n", count);
         }
         else if(!strcmp(key, "-sqr")){
-            printf("Square of curved triangle: %d\n", sum);
+            printf("Square of curved triangle: %lf\n", sum);
         }
         else if(!strcmp(key, "-testr")){
             testr();
+            printf("Write \"-help\" to get list of commands\n");
         }
         else if(!strcmp(key, "-testi")){
             testi();
+            printf("Write \"-help\" to get list of commands\n");
         }
         else{
             printf("No such command\n");

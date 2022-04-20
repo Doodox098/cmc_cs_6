@@ -11,7 +11,7 @@ _func1:
     fld1
     faddp
     faddp
-    fld qword[esp + 8]
+    fld qword[esp + 4]
     fld1
     fsubp
     fld st0
@@ -28,7 +28,7 @@ _func2:
     fsubp
     fld1
     fscale
-    fld qword[esp + 8]
+    fld qword[esp + 4]
     faddp
     fsqrt
     ret
@@ -36,7 +36,7 @@ _func2:
 _func3:
     finit
     fldl2e
-    fld qword[esp + 8]
+    fld qword[esp + 4]
     fchs
     fmulp
     fld st0
