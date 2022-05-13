@@ -9,7 +9,7 @@ void testr(void){
         printf("-2 - sqrt(2x)\n");
         printf("-3 - 8/x\n");
         while(1) {
-            gets(key);
+            scanf("%s", key);
             if (!strcmp(key, "-1")) {
                 first_function = 1;
                 break;
@@ -25,7 +25,7 @@ void testr(void){
         }
         printf("Choose the second test function\n");
         while(1){
-            gets(key);
+            scanf("%s", key);
             if(!strcmp(key, "-1")) {
                 second_function = 1;
                 if(second_function == first_function){
@@ -61,22 +61,21 @@ void testr(void){
         double result;
         if(first_function == 1 || second_function == 1){
             if(first_function == 2 || second_function == 2){
-                result = root(f1, f2, 1, 2, &num_culc, eps);
+                result = root(f1, f2, der_f1, der_f2, 1, 2, &num_culc, eps);
             }
             else{
-                result = root(f1, f3, 2, 3, &num_culc, eps);
+                result = root(f1, f3,der_f1, der_f3, 2, 3, &num_culc, eps);
             }
         }
         else{
-            result = root(f2, f3, 2, 4, &num_culc, eps);
+            result = root(f2, f3, der_f2, der_f3, 2, 4, &num_culc, eps);
         }
         printf("Result: %lf \n", result);
         printf("Number of calculation: %d \n", num_culc);
         printf("-continue - Continue testing\n");
         printf("-end - Stop testing\n");
-        gets(key);
         while(1){
-            gets(key);
+            scanf("%s", key);
             if(!strcmp(key, "-continue")) {
                 printf("Continue testing\n");
                 break;

@@ -9,7 +9,7 @@ void testi(void){
         printf("-2 - sqrt(2x)\n");
         printf("-3 - 8/x\n");
         while(1) {
-            gets(key);
+            scanf("%s", key);
             if (!strcmp(key, "-1")) {
                 function = 1;
                 break;
@@ -36,9 +36,8 @@ void testi(void){
         printf("Result: %f \n", result);
         printf("-continue - Continue testing\n");
         printf("-end - Stop testing\n");
-        gets(key);
         while(1){
-            gets(key);
+            scanf("%s", key);
             if(!strcmp(key, "-continue")) {
                 printf("Continue testing\n");
                 break;
